@@ -1,3 +1,3 @@
 # Tetris-Java
-https://bordiani.wordpress.com/2014/10/20/tetris-in-java-part-i-overview/
+https://www.ssaurel.com/blog/learn-to-create-a-tetris-game-in-java-with-swing/
 Tetris using Swing and Java
