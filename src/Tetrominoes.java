@@ -1,5 +1,9 @@
 import java.awt.Color;
-
+/*
+ * Design tetrominoes, using a Java enum with 2 fields, 
+ * one for coords (using 2D int array of 4r * 2c since each shape fits into this dimension), 
+ * and one for color
+ * The constructor takes in coords and color*/
 enum Tetrominoes {
 	
 	NoShape(new int[][] { { 0, 0 }, { 0, 0 }, { 0, 0 }, { 0, 0 } }, new Color(0, 0, 0)),

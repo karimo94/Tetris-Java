@@ -13,8 +13,8 @@ import javax.swing.JTextField;
 public class tetrisUI {
 
 	private JFrame frame;
-	private JTextField scoreTextField;
-	private JTextField levelTextField;
+	public JTextField scoreTextField;
+	public JTextField levelTextField;
 	private ArrayList<JPanel[]> grid;
 	/**
 	 * Launch the application.
