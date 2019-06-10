@@ -1,21 +1,22 @@
 import java.awt.EventQueue;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class tetrisUI {
 
 	private JFrame frame;
 	public JTextField scoreTextField;
 	public JTextField levelTextField;
-	private ArrayList<JPanel[]> grid;
+	private Board gamePanel;
 	/**
 	 * Launch the application.
 	 */
@@ -49,14 +50,12 @@ public class tetrisUI {
 		frame.setBounds(100, 100, 450, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		JPanel gamePanel = new JPanel();
+		/*our current game jpanel, should be replaced by Board*/
+		gamePanel = new Board(this);
 		gamePanel.setBounds(5,  5, 217,  462);
 		gamePanel.setPreferredSize(new Dimension(200, 500));
 		gamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		frame.getContentPane().add(gamePanel);
-		
-		initGrid();
 		
 		JLabel lblScore = new JLabel("Score");
 		lblScore.setBounds(285, 32, 46, 14);
@@ -81,15 +80,35 @@ public class tetrisUI {
 		JLabel lblUseArrowKeys = new JLabel("Use arrow keys and space bar");
 		lblUseArrowKeys.setBounds(240, 300, 200, 14);
 		frame.getContentPane().add(lblUseArrowKeys);
-	}
-
-	private void initGrid() {
-		grid = new ArrayList<JPanel[]>();
-		for(int i = 0; i < 20; i++) {
-			grid.add(new JPanel[10]);
-			for(int j = 0; j < 10; j++) {
-				grid.get(i)[j] = new JPanel();
+		
+		JButton btnNewGame = new JButton("New");
+		btnNewGame.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				gamePanel.startGame();
 			}
-		}
+		});
+		btnNewGame.setBounds(285, 200, 89, 23);
+		frame.getContentPane().add(btnNewGame);
+		
+		JButton btnContinue = new JButton(">");
+		btnContinue.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				gamePanel.startGame();
+			}
+		});
+		btnContinue.setBounds(285, 234, 41, 23);
+		frame.getContentPane().add(btnContinue);
+		
+		JButton btnPause = new JButton("||");
+		btnPause.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				gamePanel.pauseGame();
+			}
+		});
+		btnPause.setBounds(333, 234, 41, 23);
+		frame.getContentPane().add(btnPause);
 	}
 }
